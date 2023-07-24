@@ -1,4 +1,8 @@
 -- -------------------------------- The script used when storeMode is 'db' --------------------------------
+--  Create Database
+CREATE DATABASE IF NOT EXISTS seata DEFAULT CHARACTER SET = utf8mb4;
+USE seata;
+
 -- the table to store GlobalSession data
 CREATE TABLE IF NOT EXISTS `global_table`
 (
