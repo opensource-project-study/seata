@@ -39,5 +39,4 @@ ADD LICENSE /seata-server/LICENSE
 
 # set extra environment
 ENV LOADER_PATH="/seata-server/lib"
-#CMD ["bash","-c","/seata-server/bin/seata-server.sh && tail -f /dev/null"]
-CMD ["bash","-c","/seata-server/bin/seata-server.sh"]
+CMD ["bash","-c","/seata-server/bin/seata-server.sh && tail -f /dev/null"]
