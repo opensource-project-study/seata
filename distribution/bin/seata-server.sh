@@ -163,9 +163,11 @@ CMD_LINE_ARGS=$@
 # start
 if [[ "$DOCKER_ENABLE" = "true" ]]; then
   # 容器环境
+  # 可以通过docker logs命令查看日志
   exec $JAVACMD ${JAVA_OPT} ${CMD_LINE_ARGS}
 else
   # 非容器环境
+  # 只能在文件start.out里查看日志
   echo "$JAVACMD ${JAVA_OPT} ${CMD_LINE_ARGS}" > ${BASEDIR}/logs/start.out 2>&1 &
   nohup $JAVACMD ${JAVA_OPT} ${CMD_LINE_ARGS} >> ${BASEDIR}/logs/start.out 2>&1 &
   echo "seata-server is starting, you can check the ${BASEDIR}/logs/start.out"
