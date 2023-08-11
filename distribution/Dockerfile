@@ -27,7 +27,7 @@ FROM openjdk:8u342
 # set label
 LABEL maintainer="Seata <seata.io>"
 
-WORKDIR /$BASE_DIR
+WORKDIR /seata-server
 
 # ADD FORM distribution
 ADD bin/ /seata-server/bin
