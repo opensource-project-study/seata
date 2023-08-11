@@ -119,6 +119,13 @@ if [ "$SKYWALKING_ENABLE" = "true" ]; then
 else
   echo "apm-skywalking not enabled"
 fi
+
+# 增加远程调试功能
+if [ -n "$DEBUG_PORT" ]; then
+  JAVA_DEBUG_OPTS=" -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=$DEBUG_PORT,server=y,suspend=n " ;
+  JAVA_OPT="${JAVA_OPT} $JAVA_DEBUG_OPTS"
+fi
+
 JVM_XMX=$JVM_XMX
 JVM_XMS=$JVM_XMS
 JVM_XSS=$JVM_XSS
