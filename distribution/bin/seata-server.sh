@@ -161,6 +161,12 @@ fi
 CMD_LINE_ARGS=$@
 
 # start
-echo "$JAVACMD ${JAVA_OPT} ${CMD_LINE_ARGS}" > ${BASEDIR}/logs/start.out 2>&1 &
-nohup $JAVACMD ${JAVA_OPT} ${CMD_LINE_ARGS} >> ${BASEDIR}/logs/start.out 2>&1 &
-echo "seata-server is starting, you can check the ${BASEDIR}/logs/start.out"
+if [[ $DOCKER_ENV = "true" ]]; then
+  # 容器环境
+  exec $JAVACMD ${JAVA_OPT} ${CMD_LINE_ARGS}
+else
+  # 非容器环境
+  echo "$JAVACMD ${JAVA_OPT} ${CMD_LINE_ARGS}" > ${BASEDIR}/logs/start.out 2>&1 &
+  nohup $JAVACMD ${JAVA_OPT} ${CMD_LINE_ARGS} >> ${BASEDIR}/logs/start.out 2>&1 &
+  echo "seata-server is starting, you can check the ${BASEDIR}/logs/start.out"
+fi
