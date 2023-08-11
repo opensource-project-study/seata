@@ -161,7 +161,7 @@ fi
 CMD_LINE_ARGS=$@
 
 # start
-if [[ $DOCKER_ENV = "true" ]]; then
+if [[ "$DOCKER_ENABLE" = "true" ]]; then
   # 容器环境
   exec $JAVACMD ${JAVA_OPT} ${CMD_LINE_ARGS}
 else
