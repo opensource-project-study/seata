@@ -37,10 +37,20 @@ console:
 seata:
   config:
     # support: nacos, consul, apollo, zk, etcd3
-    type: file
+    type: apollo
+    apollo:
+      # FAT环境
+      # 跳过apollo-meta
+      apollo-config-service: http://192.168.3.129:18081
+      #apollo-meta: http://192.168.3.129:18081
+      app-id: seata-server
+      namespace: application
+      apollo-accesskey-secret: ""
   registry:
     # support: nacos, eureka, redis, zk, consul, etcd3, sofa
-    type: file
+    type: zk
+    zk:
+      server-addr: 192.168.3.129:2181,192.168.3.129:2182,192.168.3.129:2183
   store:
     # support: file 、 db 、 redis
     mode: file
